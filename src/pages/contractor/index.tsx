@@ -26,7 +26,7 @@ function account() {
           <input
             className="px-4 w-full focus:shadow-xl  py-6 text-lg  rounded-lg opacity-90 outline-none border-white/60 border bg-white/20 text-white placeholder-white/70"
             type="text"
-            placeholder="Enter The Toekn.."
+            placeholder="Enter The Token.."
             value={token}
             onChange={(e) => setToken(e.target.value)}
           />
