@@ -1,6 +1,6 @@
 import MainLayout from "@/layouts/MainLayout";
 import { ethers } from "ethers";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { SiEthereum } from "react-icons/si";
 interface IAccountSpecific {
   error?: string;
@@ -26,7 +26,7 @@ const AccountSpecific: React.FC<IAccountSpecific> = ({ error, balance }) => {
 
 export default AccountSpecific;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export async function GetServerSideProps(ctx: GetServerSidePropsContext) {
   const params = ctx.params;
   if (!params?.id) {
     return {
@@ -47,11 +47,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       props: { balance: ethers.formatEther(balance) },
     };
   } catch (e) {
-    console.log(e);
     return {
+      // @ts-ignore
       props: { error: e.code },
     };
   }
 
   //   getBalance("0x73bceb1cd57c711feac4224d062b0f6ff338501e");
-};
+}

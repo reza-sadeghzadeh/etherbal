@@ -17,19 +17,21 @@ function account() {
 
   return (
     <MainLayout>
+      <h1 className="text-xl border py-2 bg-white text-fuchsia-600">
+        Check An Account For Etherum Balance
+      </h1>
       <form
         onSubmit={submit}
         className="flex justify-center items-center w-full h-full"
       >
         <input
-          style={{ width: "calc(300px , 90% , 1000px" }}
-          className="px-4 py-6 text-lg  rounded-lg opacity-90 border-white border bg-white/20 text-black placeholder-black"
+          className="px-4 focus:shadow-xl w-96 py-6 text-lg  rounded-lg opacity-90 outline-none border-white/60 border bg-white/20 text-white placeholder-white/70"
           type="text"
-          placeholder="Enter The Address"
+          placeholder="Enter The Address.."
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
-        <button className="ml-4 py-7 px-6 hover:bg-white/25 rounded-lg">
+        <button className="ml-4 py-7 px-6 hover:bg-white/25 hover:shadow-xl rounded-lg">
           SUBMIT
         </button>
       </form>
