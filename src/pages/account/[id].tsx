@@ -48,10 +48,11 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     return {
       props: { balance: ethers.formatEther(balance) },
     };
-  } catch ({ code }) {
+  } catch (error) {
     return {
       props: {
-        error: code,
+        // @ts-ignore
+        error: error.code,
       },
     };
   }
