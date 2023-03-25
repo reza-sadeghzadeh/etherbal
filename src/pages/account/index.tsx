@@ -25,7 +25,7 @@ function account() {
       </h1>
       <form
         onSubmit={submit}
-        className="flex justify-center items-center w-full h-full"
+        className="flex justify-center items-center my-32 w-full h-full"
       >
         <input
           className="px-4 focus:shadow-xl w-96 py-6 text-lg  rounded-lg opacity-90 outline-none border-white/60 border bg-white/20 text-white placeholder-white/70"

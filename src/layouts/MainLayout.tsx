@@ -48,7 +48,18 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
             Account
           </div>
         </Link>
-        <button className={[styles.navButton].join(" ")}>Ballance</button>
+        <Link href={"/contractor"}>
+          <div
+            className={[
+              styles.flexCenter,
+              styles.navButton,
+              asPath.startsWith("/contractor") ? styles.activeTab : "",
+            ].join(" ")}
+          >
+            <MdOutlineAccountBalance style={{ marginRight: "9px" }} />
+            Contractor
+          </div>
+        </Link>
       </nav>
       <section className={styles.container}>
         <div className={styles.box}>{children}</div>

@@ -1,4 +1,5 @@
 import MainLayout from "@/layouts/MainLayout";
+import { getProvider } from "@/utils/provider";
 import { ethers } from "ethers";
 import { GetServerSidePropsContext } from "next";
 import { SiEthereum } from "react-icons/si";
@@ -37,11 +38,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     };
   }
 
-  const provider = new ethers.InfuraProvider(
-    "mainnet",
-    process.env.API_KEY,
-    process.env.API_SECRET
-  );
+  const provider = await getProvider();
   try {
     const balance = await provider.getBalance(params.id as string);
 
