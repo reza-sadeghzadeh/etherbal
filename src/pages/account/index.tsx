@@ -3,16 +3,19 @@ import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
 function account() {
+  const [isLoading, setLoading] = useState(false);
   const [address, setAddress] = useState("");
   const { push } = useRouter();
 
   const submit = (e: FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
     if (!address) {
       alert("Enter Address");
     } else {
       push(`/account/${address}`);
     }
+    setLoading(false);
   };
 
   return (
@@ -32,7 +35,7 @@ function account() {
           onChange={(e) => setAddress(e.target.value)}
         />
         <button className="ml-4 py-7 px-6 hover:bg-white/25 hover:shadow-xl rounded-lg">
-          SUBMIT
+          {isLoading ? "..." : "SUBMIT"}
         </button>
       </form>
     </MainLayout>

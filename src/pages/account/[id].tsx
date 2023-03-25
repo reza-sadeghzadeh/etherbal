@@ -12,7 +12,7 @@ const AccountSpecific: React.FC<IAccountSpecific> = ({ error, balance }) => {
     <MainLayout>
       <div className="flex h-full w-full justify-center items-center">
         {error ? (
-          "Invalid Address"
+          "Invalid Address" + `  >> ${error}`
         ) : (
           <div className="flex justify-center items-center">
             <SiEthereum size={64} className="mr-4" />
@@ -26,8 +26,9 @@ const AccountSpecific: React.FC<IAccountSpecific> = ({ error, balance }) => {
 
 export default AccountSpecific;
 
-export async function GetServerSideProps(ctx: GetServerSidePropsContext) {
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const params = ctx.params;
+
   if (!params?.id) {
     return {
       redirect: {
@@ -43,13 +44,15 @@ export async function GetServerSideProps(ctx: GetServerSidePropsContext) {
   );
   try {
     const balance = await provider.getBalance(params.id as string);
+
     return {
       props: { balance: ethers.formatEther(balance) },
     };
-  } catch (e) {
+  } catch ({ code }) {
     return {
-      // @ts-ignore
-      props: { error: e.code },
+      props: {
+        error: code,
+      },
     };
   }
 
