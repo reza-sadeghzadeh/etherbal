@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { ReactNode } from "react";
 import styles from "../styles/Home.module.css";
 import { MdOutlineAccountBalance } from "react-icons/md";
-import { AiOutlineHome } from "react-icons/Ai";
+import { AiOutlineHome } from "react-icons/ai";
 import { Fira_Code } from "next/font/google";
 const inter = Fira_Code({ subsets: ["latin"] });
 
