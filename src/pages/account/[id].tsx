@@ -1,6 +1,6 @@
 import MainLayout from "@/layouts/MainLayout";
 import { ethers } from "ethers";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import { SiEthereum } from "react-icons/si";
 interface IAccountSpecific {
   error?: string;
